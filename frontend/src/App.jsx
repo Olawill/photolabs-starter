@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './App.scss';
-import PhotoList from 'components/PhotoList';
-import TopNavigation from 'components/TopNavigationBar';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import HomeRoute from 'routes/HomeRoute';
 
 
 
@@ -18,7 +18,6 @@ const App = () => {
 
   // {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
 
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
 
   // const handleClick = useCallback(() => {
 
@@ -29,8 +28,8 @@ const App = () => {
   return (
     <div className="App">
       {/* {photos} */}
-      <TopNavigation favouritePhotos={favouritePhotos} />
-      <PhotoList setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos}/>
+      <HomeRoute />
+      <PhotoDetailsModal />
     </div>
   );
 };
