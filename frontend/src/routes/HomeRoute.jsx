@@ -10,7 +10,7 @@ const HomeRoute = () => {
   return (
     <div className="home-route">
       {/* Insert React */}
-      <TopNavigation />
+      <TopNavigation favouritePhotos={favouritePhotos} />
       <PhotoList setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos} />
     </div>
   );

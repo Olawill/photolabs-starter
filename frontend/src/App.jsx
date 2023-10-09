@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className="App">
       {/* {photos} */}
-      <TopNavigation />
+      <TopNavigation favouritePhotos={favouritePhotos} />
       <PhotoList setFavouritePhotos={setFavouritePhotos} favouritePhotos={favouritePhotos}/>
     </div>
   );
