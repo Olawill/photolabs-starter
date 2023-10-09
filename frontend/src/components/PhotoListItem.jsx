@@ -6,9 +6,14 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   /* Insert React */
+
   return (
     <div className="photo-list__item" key={props.data.id}>
-      <PhotoFavButton />
+      <PhotoFavButton
+        setFav={props.fav.setFavouritePhotos}
+        photoData={props.data}
+        favPhoto={props.fav.favouritePhotos}
+      />
       <img className="photo-list__image" src={props.data.urls.full} alt={props.data.id} />
 
       <div className="photo-list__user-details">

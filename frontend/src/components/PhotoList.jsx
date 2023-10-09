@@ -59,11 +59,15 @@ import photosInfo from "./../../src/mocks/photos";
 //   },
 // ];
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+  
   return (
     <ul className="photo-list">
       {/* Insert React */}
-      {photosInfo.map(data => <PhotoListItem key={data.id} data={data}/>)}
+      {photosInfo.map(data => <PhotoListItem key={data.id}
+        data={data}
+        fav={props}
+      />)}
     </ul>
   );
 };
