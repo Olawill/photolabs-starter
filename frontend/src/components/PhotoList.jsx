@@ -2,7 +2,6 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photosInfo from "./../../src/mocks/photos";
 
 
 // const sampleDataForPhotoList = [
@@ -60,7 +59,7 @@ import photosInfo from "./../../src/mocks/photos";
 // ];
 
 const PhotoList = (props) => {
-  
+  const photosInfo = props.data;
   return (
     <ul className="photo-list">
       {/* Insert React */}

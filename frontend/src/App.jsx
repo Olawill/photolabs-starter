@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './App.scss';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import HomeRoute from 'routes/HomeRoute';
+import photosInfo from './mocks/photos';
 
 
 
@@ -24,12 +24,13 @@ const App = () => {
   //   return setSelected(prevState => !prevState);
   // });
 
+  // const [isModalActive, setIsModalActive] = useState(false);
 
   return (
     <div className="App">
       {/* {photos} */}
-      <HomeRoute />
-      <PhotoDetailsModal />
+      <HomeRoute data={photosInfo}/>
+      {/* <PhotoDetailsModal setIsModalActive={setIsModalActive} isModalActive={isModalActive}/> */}
     </div>
   );
 };

@@ -8,13 +8,22 @@ const PhotoListItem = (props) => {
   /* Insert React */
 
   return (
-    <div className="photo-list__item" key={props.data.id}>
+    <div className="photo-list__item"
+      key={props.data.id}>
+
       <PhotoFavButton
         setFav={props.fav.setFavouritePhotos}
         photoData={props.data}
         favPhoto={props.fav.favouritePhotos}
       />
-      <img className="photo-list__image" src={props.data.urls.full} alt={props.data.id} />
+      <img
+        className="photo-list__image"
+        src={props.data.urls.full}
+        alt={props.data.id}
+        onClick={() => {
+          props.fav.setIsModalActive(true);
+          props.fav.setClickedPhotoData(props.data);
+        }}/>
 
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={props.data.user.profile} alt={props.data.user.username} />
