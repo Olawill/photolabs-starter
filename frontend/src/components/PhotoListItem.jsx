@@ -8,8 +8,9 @@ const PhotoListItem = (props) => {
   /* Insert React */
 
   return (
-    <div className="photo-list__item"
-      key={props.data.id}>
+    <div className={!props.fav.isModalActive ? "photo-details-modal__images"
+      : "photo-list__item"}
+    key={props.data.id}>
 
       <PhotoFavButton
         setFav={props.fav.setFavouritePhotos}

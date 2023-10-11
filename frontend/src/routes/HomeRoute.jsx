@@ -18,6 +18,7 @@ const HomeRoute = (props) => {
       <PhotoList
         setFavouritePhotos={setFavouritePhotos}
         favouritePhotos={favouritePhotos}
+        isModalActive={isModalActive}
         setIsModalActive={setIsModalActive}
         clickedPhotoData={clickedPhotoData}
         setClickedPhotoData={setClickedPhotoData}
