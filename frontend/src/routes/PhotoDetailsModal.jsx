@@ -4,11 +4,9 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoListItem from 'components/PhotoListItem';
-// import PhotoListItem from 'components/PhotoListItem';
 
 
 const PhotoDetailsModal = (props) => {
-  // console.log(props);
 
   // Class Names for Image on Modal Page
   const modalPagePhotos = {
