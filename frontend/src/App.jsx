@@ -2,35 +2,42 @@ import React from 'react';
 
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import photosInfo from './mocks/photos';
+import useApplicationData from "hooks/useApplicationData";
 
 
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  // Create three instances of photoitem
-  // const photos = Array.from(new Array(3),
-  //   () => <PhotoListItem
-  //     key={sampleDataForPhotoListItem.id}
-  //     sampleDataForPhotoListItem={sampleDataForPhotoListItem}
-  //   />);
+  const {
+    mainPagePhotos,
+    onLoadTopic,
+    onLoadPhoto,
+    favouritePhotos,
+    setFavouritePhotos,
+    isModalActive,
+    setIsModalActive,
+    clickedPhotoData,
+    setClickedPhotoData,
+  } = useApplicationData();
 
-  // {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
-
-
-  // const handleClick = useCallback(() => {
-
-  //   return setSelected(prevState => !prevState);
-  // });
-
-  // const [isModalActive, setIsModalActive] = useState(false);
+  // console.log(onLoadTopic);
 
   return (
     <div className="App">
-      {/* {photos} */}
-      <HomeRoute data={photosInfo}/>
-      {/* <PhotoDetailsModal setIsModalActive={setIsModalActive} isModalActive={isModalActive}/> */}
+
+      <HomeRoute
+        mainPagePhotos={mainPagePhotos}
+        data={onLoadPhoto}
+        topics={onLoadTopic}
+        favouritePhotos={favouritePhotos}
+        setFavouritePhotos={setFavouritePhotos}
+        isModalActive={isModalActive}
+        setIsModalActive={setIsModalActive}
+        clickedPhotoData={clickedPhotoData}
+        setClickedPhotoData={setClickedPhotoData}
+      />
+      
     </div>
   );
 };

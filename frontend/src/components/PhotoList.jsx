@@ -60,6 +60,8 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const photosInfo = props.data;
+  // const selected = props.favouritePhotos.includes()
+  // console.log(props.favouritePhotos.includes(props.data.id));
 
   return (
     <ul className="photo-list">

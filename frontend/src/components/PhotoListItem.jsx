@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
@@ -6,6 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   /* Insert React */
+  const [selected, setSelected] = useState(props.favouritePhotos.includes(props.data.id));
 
   return (
     <div className={props.imgClass.divClass}
@@ -15,6 +16,8 @@ const PhotoListItem = (props) => {
         favPhoto={props.favouritePhotos}
         setFav={props.setFavouritePhotos}
         photoData={props.data}
+        selected={selected}
+        setSelected={setSelected}
       />
       <img
         className={props.imgClass.imgClass}
