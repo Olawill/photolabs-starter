@@ -10,12 +10,24 @@ const HomeRoute = (props) => {
   const [isModalActive, setIsModalActive] = useState(false);
   const [clickedPhotoData, setClickedPhotoData] = useState({});
 
+  // Class Names for Image on Home route
+  const mainPagePhotos = {
+    divClass: "photo-list__item",
+    imgClass: "photo-list__image",
+    userDivClass: "photo-list__user-details",
+    profileImg: "photo-list__user-profile",
+    profileInfo: "photo-list__user-info",
+    profileLocation: "photo-list__user-location"
+    // listClass: "photo-list"
+  };
+
 
   return (
     <div className="home-route">
       {/* Insert React */}
       <TopNavigation favouritePhotos={favouritePhotos} />
       <PhotoList
+        imgClass={mainPagePhotos}
         setFavouritePhotos={setFavouritePhotos}
         favouritePhotos={favouritePhotos}
         isModalActive={isModalActive}
@@ -25,9 +37,13 @@ const HomeRoute = (props) => {
         data={props.data}/>
       
       <PhotoDetailsModal
-        setIsModalActive={setIsModalActive}
         isModalActive={isModalActive}
-        clickedPhotoData={clickedPhotoData}/>
+        setIsModalActive={setIsModalActive}
+        favouritePhotos={favouritePhotos}
+        setFavouritePhotos={setFavouritePhotos}
+        clickedPhotoData={clickedPhotoData}
+        setClickedPhotoData={setClickedPhotoData}
+        imgClass={mainPagePhotos}/>
     </div>
   );
 };

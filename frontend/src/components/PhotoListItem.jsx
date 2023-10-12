@@ -8,29 +8,28 @@ const PhotoListItem = (props) => {
   /* Insert React */
 
   return (
-    <div className={!props.fav.isModalActive ? "photo-details-modal__images"
-      : "photo-list__item"}
-    key={props.data.id}>
+    <div className={props.imgClass.divClass}
+      key={props.data.id}>
 
       <PhotoFavButton
-        setFav={props.fav.setFavouritePhotos}
+        favPhoto={props.favouritePhotos}
+        setFav={props.setFavouritePhotos}
         photoData={props.data}
-        favPhoto={props.fav.favouritePhotos}
       />
       <img
-        className="photo-list__image"
+        className={props.imgClass.imgClass}
         src={props.data.urls.full}
         alt={props.data.id}
         onClick={() => {
-          props.fav.setIsModalActive(true);
-          props.fav.setClickedPhotoData(props.data);
+          props.setIsModalActive(true);
+          props.setClickedPhotoData(props.data);
         }}/>
 
-      <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={props.data.user.profile} alt={props.data.user.username} />
-        <span className="photo-list__user-info">
+      <div className={props.imgClass.userDivClass}>
+        <img className={props.imgClass.profileImg} src={props.data.user.profile} alt={props.data.user.username} />
+        <span className={props.imgClass.profileInfo}>
           {props.data.user.name}
-          <p className="photo-list__user-location">{props.data.location.city}, {props.data.location.country}</p>
+          <p className={props.imgClass.profileLocation}>{props.data.location.city}, {props.data.location.country}</p>
         </span>
       </div>
     </div>
