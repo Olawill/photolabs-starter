@@ -13,11 +13,12 @@ import useApplicationData from "hooks/useApplicationData";
 const App = () => {
   
   const {
-    mainPagePhotos, onLoadTopic,
-    onLoadPhoto, favouritePhotos,
+    mainPagePhotos, topicData,
+    photoData, favouritePhotos,
     setFavouritePhotos, isModalActive,
     setIsModalActive, clickedPhotoData,
-    setClickedPhotoData,
+    setClickedPhotoData, setPhotoData,
+    setTopicData,
   } = useApplicationData();
   
 
@@ -26,14 +27,16 @@ const App = () => {
 
       <HomeRoute
         mainPagePhotos={mainPagePhotos}
-        data={onLoadPhoto}
-        topics={onLoadTopic}
+        data={photoData}
+        topics={topicData}
         favouritePhotos={favouritePhotos}
         setFavouritePhotos={setFavouritePhotos}
         isModalActive={isModalActive}
         setIsModalActive={setIsModalActive}
         clickedPhotoData={clickedPhotoData}
         setClickedPhotoData={setClickedPhotoData}
+        setPhotoData={setPhotoData}
+        setTopicData={setTopicData}
       />
 
       <PhotoDetailsModal
@@ -43,6 +46,7 @@ const App = () => {
         setFavouritePhotos={setFavouritePhotos}
         clickedPhotoData={clickedPhotoData}
         setClickedPhotoData={setClickedPhotoData}
+        setPhotoData={setPhotoData}
         imgClass={mainPagePhotos}
       />
     </div>

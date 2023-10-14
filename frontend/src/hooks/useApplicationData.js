@@ -6,6 +6,8 @@ import { useReducer } from "react";
 const SET_FAVOURITE_PHOTOS = "SET_FAVOURITE_PHOTOS";
 const SET_IS_MODAL_ACTIVE = "SET_IS_MODAL_ACTIVE";
 const SET_CLICKED_PHOTO_DATA = "SET_CLICKED_PHOTO_DATA";
+const SET_PHOTO_DATA = "SET_PHOTO_DATA";
+const SET_TOPIC_DATA = "SET_TOPIC_DATA";
 
 
 // Define the reducer function to manage state changes
@@ -17,6 +19,10 @@ const reducer = (state, action) => {
     return { ...state, isModalActive: action.payload };
   case SET_CLICKED_PHOTO_DATA:
     return { ...state, clickedPhotoData: action.payload };
+  case SET_PHOTO_DATA:
+    return { ...state, photoData: action.payload };
+  case SET_TOPIC_DATA:
+    return { ...state, topicData: action.payload };
   default:
     return state;
   }
@@ -33,8 +39,8 @@ const useApplicationData = () => {
       profileInfo: "photo-list__user-info",
       profileLocation: "photo-list__user-location"
     },
-    onLoadTopic: topics,
-    onLoadPhoto: photos,
+    topicData: topics,
+    photoData: photos,
     favouritePhotos: [],
     isModalActive: false,
     clickedPhotoData: {},
@@ -56,11 +62,21 @@ const useApplicationData = () => {
     dispatch({ type: SET_CLICKED_PHOTO_DATA, payload: data });
   };
 
+  const setPhotoData = (data) => {
+    dispatch({ type: SET_PHOTO_DATA, payload: data });
+  };
+
+  const setTopicData = (data) => {
+    dispatch({ type: SET_TOPIC_DATA, payload: data });
+  };
+
   return {
     ...state,
     setFavouritePhotos,
     setIsModalActive,
     setClickedPhotoData,
+    setPhotoData,
+    setTopicData,
   };
 };
 
