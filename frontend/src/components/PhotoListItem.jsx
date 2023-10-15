@@ -6,7 +6,6 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   /* Insert React */
-  // console.log(props);
   
   const handleClick = () => {
 

@@ -19,15 +19,10 @@ const PhotoDetailsModal = (props) => {
     listClass: "photo-details-modal__top-bar"
   };
 
-  const handleClose = (e) => {
-    e.preventDefault();
-    props.setIsModalActive(false);
-  };
-
   return (
     <div className="photo-details-modal"
       style={{display: props.isModalActive ? 'inherit' : 'none'}}>
-      <button className="photo-details-modal__close-button" onClick={handleClose}>
+      <button className="photo-details-modal__close-button" onClick={props.handleClose}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
       {props.isModalActive && <>

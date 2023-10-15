@@ -18,7 +18,7 @@ const App = () => {
     setFavouritePhotos, isModalActive,
     setIsModalActive, clickedPhotoData,
     setClickedPhotoData, setPhotoData,
-    setTopicData, handleTopicClick
+    setTopicData, handleTopicClick, handleClose
   } = useApplicationData();
   
 
@@ -49,6 +49,7 @@ const App = () => {
         setClickedPhotoData={setClickedPhotoData}
         setPhotoData={setPhotoData}
         imgClass={mainPagePhotos}
+        handleClose={handleClose}
       />
     </div>
   );
