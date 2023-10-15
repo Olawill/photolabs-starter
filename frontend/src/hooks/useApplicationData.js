@@ -1,6 +1,4 @@
-import topics from "./../../src/mocks/topics";
-import photos from "./../../src/mocks/photos";
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 // Define action types
 const SET_FAVOURITE_PHOTOS = "SET_FAVOURITE_PHOTOS";
@@ -39,8 +37,8 @@ const useApplicationData = () => {
       profileInfo: "photo-list__user-info",
       profileLocation: "photo-list__user-location"
     },
-    topicData: topics,
-    photoData: photos,
+    topicData: [],
+    photoData: [],
     favouritePhotos: [],
     isModalActive: false,
     clickedPhotoData: {},
@@ -48,6 +46,23 @@ const useApplicationData = () => {
 
   // Create a reducer and initialize state
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // EFFECT TO REQUEST PHOTOS FROM API
+  useEffect(() => {
+    fetch("/api/photos")
+      .then(response => response.json())
+      .then(data => {
+        setPhotoData(data);
+      })
+      .catch(error => console.log(error));
+
+    fetch("/api/topics")
+      .then(response => response.json())
+      .then(data => {
+        setTopicData(data);
+      })
+      .catch(error => console.log(error));
+  }, []);
 
   // Actions to update state
   const setFavouritePhotos = (favourites) => {
