@@ -6,7 +6,14 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   /* Insert React */
+  // console.log(props);
+  
+  const handleClick = () => {
 
+    props.setClickedPhotoData(props.data);
+    props.setIsModalActive(true);
+  };
+  
   return (
     <div className={props.imgClass.divClass}
       key={props.data.id}>
@@ -20,10 +27,7 @@ const PhotoListItem = (props) => {
         className={props.imgClass.imgClass}
         src={props.data.urls.full}
         alt={props.data.id}
-        onClick={() => {
-          props.setIsModalActive(true);
-          props.setClickedPhotoData(props.data);
-        }}/>
+        onClick={handleClick}/>
 
       <div className={props.imgClass.userDivClass}>
         <img className={props.imgClass.profileImg} src={props.data.user.profile} alt={props.data.user.username} />

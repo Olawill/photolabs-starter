@@ -41,7 +41,7 @@ const PhotoDetailsModal = (props) => {
         <h5 className="photo-details-modal__header">Similar Photos</h5>
         <ul className="photo-details-modal__top-bar">
           <PhotoList
-            data={Object.values(props.clickedPhotoData.similarPhotos)}
+            data={Object.values(props.clickedPhotoData.similar_photos)}
             imgClass={props.imgClass}
             favouritePhotos={props.favouritePhotos}
             setFavouritePhotos={props.setFavouritePhotos}

@@ -18,7 +18,7 @@ const App = () => {
     setFavouritePhotos, isModalActive,
     setIsModalActive, clickedPhotoData,
     setClickedPhotoData, setPhotoData,
-    setTopicData,
+    setTopicData, handleTopicClick
   } = useApplicationData();
   
 
@@ -37,6 +37,7 @@ const App = () => {
         setClickedPhotoData={setClickedPhotoData}
         setPhotoData={setPhotoData}
         setTopicData={setTopicData}
+        handleTopicClick={handleTopicClick}
       />
 
       <PhotoDetailsModal

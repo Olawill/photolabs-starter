@@ -6,6 +6,7 @@ const SET_IS_MODAL_ACTIVE = "SET_IS_MODAL_ACTIVE";
 const SET_CLICKED_PHOTO_DATA = "SET_CLICKED_PHOTO_DATA";
 const SET_PHOTO_DATA = "SET_PHOTO_DATA";
 const SET_TOPIC_DATA = "SET_TOPIC_DATA";
+const GET_PHOTOS_BY_TOPICS = "GET_PHOTOS_BY_TOPICS";
 
 
 // Define the reducer function to manage state changes
@@ -21,6 +22,8 @@ const reducer = (state, action) => {
     return { ...state, photoData: action.payload };
   case SET_TOPIC_DATA:
     return { ...state, topicData: action.payload };
+  case GET_PHOTOS_BY_TOPICS:
+    return { ...state, selectedTopicId: action.payload };
   default:
     return state;
   }
@@ -42,29 +45,49 @@ const useApplicationData = () => {
     favouritePhotos: [],
     isModalActive: false,
     clickedPhotoData: {},
+    selectedTopicId: null,
   };
 
   // Create a reducer and initialize state
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // EFFECT TO REQUEST PHOTOS FROM API
+  const { selectedTopicId } = state;
   useEffect(() => {
-    fetch("/api/photos")
-      .then(response => response.json())
-      .then(data => {
-        setPhotoData(data);
-      })
-      .catch(error => console.log(error));
-
+    // TOPICS
     fetch("/api/topics")
       .then(response => response.json())
       .then(data => {
         setTopicData(data);
       })
       .catch(error => console.log(error));
-  }, []);
+    
+    if (selectedTopicId) {
+      // WHEN A TOPIC IS CLICKED ON
+      fetch(`/api/topics/photos/${selectedTopicId}`)
+        .then(response => response.json())
+        .then(data => {
+          setPhotoData(data);
+        })
+        .catch(error => console.log(error));
+    } else {
+      fetch("/api/photos")
+        .then(response => response.json())
+        .then(data => {
+          setPhotoData(data);
+        })
+        .catch(error => console.log(error));
+    }
 
-  // Actions to update state
+  }, [selectedTopicId]);
+
+
+  // FUNCTION TO HANDLE CLICK ON TOPICS
+  const handleTopicClick = (topicID) => {
+    getTopicPhotoData(topicID);
+  };
+
+  // Actions to update statetopic
   const setFavouritePhotos = (favourites) => {
     dispatch({ type: SET_FAVOURITE_PHOTOS, payload: favourites });
   };
@@ -81,6 +104,10 @@ const useApplicationData = () => {
     dispatch({ type: SET_PHOTO_DATA, payload: data });
   };
 
+  const getTopicPhotoData = (topicID) => {
+    dispatch({ type: GET_PHOTOS_BY_TOPICS, payload: topicID });
+  };
+
   const setTopicData = (data) => {
     dispatch({ type: SET_TOPIC_DATA, payload: data });
   };
@@ -92,6 +119,7 @@ const useApplicationData = () => {
     setClickedPhotoData,
     setPhotoData,
     setTopicData,
+    handleTopicClick,
   };
 };
 
