@@ -40,7 +40,7 @@ const App = () => {
         handleTopicClick={handleTopicClick}
       />
 
-      <PhotoDetailsModal
+      {isModalActive && <PhotoDetailsModal
         isModalActive={isModalActive}
         setIsModalActive={setIsModalActive}
         favouritePhotos={favouritePhotos}
@@ -50,7 +50,7 @@ const App = () => {
         setPhotoData={setPhotoData}
         imgClass={mainPagePhotos}
         handleClose={handleClose}
-      />
+      />}
     </div>
   );
 };
