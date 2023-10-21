@@ -14,6 +14,7 @@ const PhotoList = (props) => {
       {/* Insert React */}
       {photosInfo.map(data => <PhotoListItem key={data.id}
         data={data}
+        srcData={data.urls.regular}
         imgClass={props.imgClass}
         favouritePhotos={props.favouritePhotos}
         setFavouritePhotos={props.setFavouritePhotos}

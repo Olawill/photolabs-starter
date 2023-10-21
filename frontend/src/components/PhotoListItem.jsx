@@ -19,7 +19,7 @@ const PhotoListItem = (props) => {
       />
       <img
         className={props.imgClass.imgClass}
-        src={props.data.urls.full}
+        src={props.srcData}
         alt={props.data.id}
         onClick={() => props.handlePhotoClick(props.data)}/>
 

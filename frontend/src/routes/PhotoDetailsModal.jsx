@@ -18,6 +18,7 @@ const PhotoDetailsModal = (props) => {
 
         <PhotoListItem
           data={props.clickedPhotoData}
+          srcData={props.clickedPhotoData.urls.full}
           imgClass={props.modalClass}
           favouritePhotos={props.favouritePhotos}
           setFavouritePhotos={props.setFavouritePhotos}/>
