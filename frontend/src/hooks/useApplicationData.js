@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+import axios from "axios";
 
 // Define action types
 const SET_FAVOURITE_PHOTOS = "SET_FAVOURITE_PHOTOS";
@@ -77,30 +78,26 @@ const useApplicationData = () => {
   // EFFECT TO REQUEST PHOTOS FROM API
   const { selectedTopicId } = state;
   useEffect(() => {
-    // TOPICS
-    fetch("/api/topics")
-      .then(response => response.json())
-      .then(data => {
-        setTopicData(data);
+    // TOPICS AND DATA
+    const topicPromise = axios.get("/api/topics");
+    const dataForTopicPromise = axios.get(`/api/topics/photos/${selectedTopicId}`);
+    const photoPromise = axios.get("/api/photos");
+
+    const promises = [topicPromise, selectedTopicId ? dataForTopicPromise : photoPromise];
+
+    Promise.all(promises)
+      .then((dataArray) => {
+          
+        const [topics, photos] = dataArray;
+
+        // SET THE TOPICS DATA
+        setTopicData(topics.data);
+
+        // SET PHOTO DATA
+        setPhotoData(photos.data);
+
       })
-      .catch(error => console.log(error));
-    
-    if (selectedTopicId) {
-      // WHEN A TOPIC IS CLICKED ON
-      fetch(`/api/topics/photos/${selectedTopicId}`)
-        .then(response => response.json())
-        .then(data => {
-          setPhotoData(data);
-        })
-        .catch(error => console.log(error));
-    } else {
-      fetch("/api/photos")
-        .then(response => response.json())
-        .then(data => {
-          setPhotoData(data);
-        })
-        .catch(error => console.log(error));
-    }
+      .catch((error) => console.log("Error", error));
 
   }, [selectedTopicId]);
 
