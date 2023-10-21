@@ -20,6 +20,7 @@ const App = () => {
     setClickedPhotoData, setPhotoData,
     setTopicData, handleTopicClick,
     handleClose, modalPagePhotos,
+    handlePhotoClick
   } = useApplicationData();
   
 
@@ -39,6 +40,7 @@ const App = () => {
         setPhotoData={setPhotoData}
         setTopicData={setTopicData}
         handleTopicClick={handleTopicClick}
+        handlePhotoClick={handlePhotoClick}
       />
 
       {isModalActive && <PhotoDetailsModal

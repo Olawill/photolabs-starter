@@ -64,6 +64,13 @@ const useApplicationData = () => {
     setIsModalActive(false);
   };
 
+  // HANDLE CLICKING A PHOTO TO VIEW LARGER VERSION
+  const handlePhotoClick = (data) => {
+
+    setClickedPhotoData(data);
+    setIsModalActive(true);
+  };
+
   // Create a reducer and initialize state
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -137,6 +144,7 @@ const useApplicationData = () => {
     setTopicData,
     handleTopicClick,
     handleClose,
+    handlePhotoClick,
   };
 };
 

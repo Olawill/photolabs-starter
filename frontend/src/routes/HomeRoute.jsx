@@ -24,6 +24,7 @@ const HomeRoute = (props) => {
         setIsModalActive={props.setIsModalActive}
         clickedPhotoData={props.clickedPhotoData}
         setClickedPhotoData={props.setClickedPhotoData}
+        handlePhotoClick={props.handlePhotoClick}
         data={props.data}/>
       
     </div>

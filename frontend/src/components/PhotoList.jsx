@@ -18,7 +18,7 @@ const PhotoList = (props) => {
         favouritePhotos={props.favouritePhotos}
         setFavouritePhotos={props.setFavouritePhotos}
         clickedPhotoData={props.clickedPhotoData}
-        setClickedPhotoData={props.setClickedPhotoData}
+        handlePhotoClick={props.handlePhotoClick}
         isModalActive={props.isModalActive}
         setIsModalActive={props.setIsModalActive}
       />)}
