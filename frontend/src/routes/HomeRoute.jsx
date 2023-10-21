@@ -14,7 +14,6 @@ const HomeRoute = (props) => {
         favouritePhotos={props.favouritePhotos}
         topics={props.topics}
         handleTopicClick={props.handleTopicClick}
-        // data={props.data}
       />
 
       <PhotoList

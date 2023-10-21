@@ -40,6 +40,16 @@ const useApplicationData = () => {
       profileInfo: "photo-list__user-info",
       profileLocation: "photo-list__user-location"
     },
+    // Class Names for Image on Modal Page
+    modalPagePhotos: {
+      divClass: "photo-list__item",
+      imgClass: "photo-details-modal__image",
+      userDivClass: "photo-details-modal__photographer-details",
+      profileImg: "photo-details-modal__photographer-profile",
+      profileInfo: "photo-details-modal__photographer-info",
+      profileLocation: "photo-details-modal__photographer-location",
+      listClass: "photo-details-modal__top-bar"
+    },
     topicData: [],
     photoData: [],
     favouritePhotos: [],

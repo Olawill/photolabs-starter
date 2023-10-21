@@ -8,17 +8,6 @@ import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = (props) => {
 
-  // Class Names for Image on Modal Page
-  const modalPagePhotos = {
-    divClass: "photo-list__item",
-    imgClass: "photo-details-modal__image",
-    userDivClass: "photo-details-modal__photographer-details",
-    profileImg: "photo-details-modal__photographer-profile",
-    profileInfo: "photo-details-modal__photographer-info",
-    profileLocation: "photo-details-modal__photographer-location",
-    listClass: "photo-details-modal__top-bar"
-  };
-
   return (
     <div className="photo-details-modal"
       style={{display: props.isModalActive ? 'inherit' : 'none'}}>
@@ -29,7 +18,7 @@ const PhotoDetailsModal = (props) => {
 
         <PhotoListItem
           data={props.clickedPhotoData}
-          imgClass={modalPagePhotos}
+          imgClass={props.modalClass}
           favouritePhotos={props.favouritePhotos}
           setFavouritePhotos={props.setFavouritePhotos}/>
 
